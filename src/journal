@@ -13,8 +13,9 @@ String prdStr = "";
 		}
 
 /** 
- * ProductModel을 String으로 변환해서 쿼리문에 넣었더니 Error 발생
+ * 첫번째시도: ProductModel을 String으로 변환해서 쿼리문에 넣었더니 Error 발생
  * So, 쿼리문 append 할 때, List 속성 하나하나 꺼내서 바로 append 되도록 수정
+ * 하지만 에러 발생
  **/
 		
 private String assembleUpdateMgGoupNotIncludeMgSaleLimitQty(final List<ProductModel> prdList)
@@ -40,3 +41,19 @@ private String assembleUpdateMgGoupNotIncludeMgSaleLimitQty(final List<ProductMo
 		}
 		return query.toString();
 	}
+	
+	/**
+	 * 두번째시도: 쿼리를 변경 (UPDATE문의 WHERE절에 SELECT문 서브쿼리로 추가해서, 여러 데이터를 한번에 업데이트
+	 * ENUMERATIONVALUES 값이 좀 많아서 성능 저하 걱정했지만, 전혀 문제 될 것이 없었다.
+	 **/
+	 UPDATE MGGROUPSALELIMIT M
+		SET  M.REMAINQUANTITY = '3'
+		, M.LIMITQUANTITY = '3'
+		, M.ACCUMULATEDQUANTITY ='0'
+		where M.PK IN ( select s.PK
+			    from MGGROUPSALELIMIT s
+			    JOIN products p on s.p_product = p.pk
+			    JOIN ENUMERATIONVALUES e on s.MGGROUPCODE = e.pk
+			    where e.code ='01'
+			    and p.p_skuno ='666010000003'
+		);
