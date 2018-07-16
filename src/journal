@@ -1,5 +1,5 @@
 
-// List에 담겨있는 값을 String으로 나열하기
+// List에 담겨있는 값을 String으로 나열
 
 String prdStr = "";
 
@@ -11,3 +11,32 @@ String prdStr = "";
 				prdStr += ",";
 			}
 		}
+
+/** 
+ * ProductModel을 String으로 변환해서 쿼리문에 넣었더니 Error 발생
+ * So, 쿼리문 append 할 때, List 속성 하나하나 꺼내서 바로 append 되도록 수정
+ **/
+		
+private String assembleUpdateMgGoupNotIncludeMgSaleLimitQty(final List<ProductModel> prdList)
+	{
+		preparegMgGroupSaleLimitColumns();
+		final StringBuilder query = new StringBuilder();
+		query.append("UPDATE " + this.mgGroupSaleLimitColumns.tableName);
+		// (...중략...)
+		query.append(" WHERE " + this.mgGroupSaleLimitColumns.mgGroupCodeCol + " =?");
+		
+		if (CollectionUtils.isNotEmpty(prdList))
+		{
+			query.append(" AND " + this.mgGroupSaleLimitColumns.product + " IN (");
+			for (int i = 0; i < prdList.size(); i++)
+			{
+				query.append(prdList.get(i));
+				if (i < prdList.size() - 1)
+				{
+					query.append(", ");
+				}
+			}
+			query.append(")");
+		}
+		return query.toString();
+	}
