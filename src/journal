@@ -57,3 +57,5 @@ private String assembleUpdateMgGoupNotIncludeMgSaleLimitQty(final List<ProductMo
 			    where e.code ='01'
 			    and p.p_skuno ='666010000003'
 		);
+
+
