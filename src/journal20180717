@@ -1,0 +1,10 @@
+
+<!-- core-order 부분 빈설정 -->
+	<alias alias="특화한파일과 동일한 alias" name="특화된 파일명(=id와동일하게한다)"/>
+	<bean id="특화된 파일명"
+			class="특화된 파일경로" parent="parent파일id">
+		<property name="특화된파일 내 Set 할때 사용됨" ref="stockService" />
+	</bean>
+  
+  <!-- <property name="특화된파일 내 Set 할때 사용됨" ref="stockService" /> 해당부분 name과
+  실제 파일에서 사용하고 있는 name 불일치로 빈에러가 발생 -->
