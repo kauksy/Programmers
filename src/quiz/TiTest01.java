@@ -3,7 +3,7 @@ package quiz;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TiTest {
+public class TiTest01 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -27,14 +27,20 @@ public class TiTest {
 			priceArray[priceArrayIdx - 1] = priceArrayIdx * 1000;
 		}
 
-		// System.out.println("가격의 배열인덱스 : "
-		// getSearchPriceArrayIntex(priceArray, 690000));
-
 		System.out.println(priceArray);
+		// System.out.println("가격의 배열인덱스 : "
+		 int answer = getSearchPriceArrayIntex(priceArray, 690000);
+		 System.out.println(answer);
+
 	}
 
 	// priceArray라는 int형 배열에서 SearchPrice의 금액을 찾는다.
 	public static int getSearchPriceArrayIntex(int[] priceArray, int searchPrice) {
+
+		
+		int n = searchPrice/1000;
+		System.out.println(n);
+		return n-1;
 
 		// 이곳에 해당하는 코드를 작성하시요
 		// 1. searchPrice를 10으로 나누고 자릿수를 알아냄 (자릿수: j)
@@ -49,46 +55,6 @@ public class TiTest {
 		// 6. 마지막 자릿수까지 체크하고 Map의 키값을 리턴
 
 	}
-
-	/**
-	 * Q2.. Long형을 List<Integer>로 변환
-	 * 
-	 * 	getNumList 함수를 작성하세요
-	 * (단, Stream 사용은 불가능 합니다.)
-	 **/
-
-	
-	public void testName() throws Exception {
-	    int[] value = new int[] { 1, 2, 3 };
-	    List<Integer> numList = getNumList(value);
-
-	    assertEquals(new Integer(1), numList.get(0));
-	    assertEquals(new Integer(2), numList.get(1));
-	    assertEquals(new Integer(3), numList.get(2));
-	    assertEquals(3, numList.size());
-	}
-
-	/**
-	 * int array를 Integer ArrayList로 변환
-	 * int iInt = 10;
-		Integer iInteger = new Integer(iInt);
-	 *  
-	 */
-	private List<Integer> getNumList(int[] value) {
-	    
-		List<Integer> makeList = new ArrayList<Integer>();
-		int newInteger = 0 ;
-
-		for (int i=0;  i< value.length; i++)
-		{
-			newInteger = value[i];
-			makeList.add(newInteger);
-		}
-
-		return makeList;
-
-	}
-
 }
 
 
