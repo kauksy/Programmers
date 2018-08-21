@@ -1,0 +1,37 @@
+
+
+/* HTML문 안에서 javascript 사용하기 */
+// 실제 작성코드
+ <c:if test="${!empty errorMsg}">
+	<c:set var="error" value="${errorMsg}"/>
+	 <script type="text/javascript">
+		 alert('${errorMsg}');    
+		 close();
+	 </script>	
+</c:if>
+
+// 작성 전 참고한 코드
+
+// 1. 자바스크립트 코드가 있고, html 내 호출 할 때
+// <script type="text/javascript">
+//  test();
+// </script>
+
+// 2. 호출할 자바 스크립트에 매개변수를 전달해야 하는 경우 var 형은 소괄호안에 넣기
+//<script type="text/javascript">
+//  test(abc);
+// </script>
+
+// 3. ${객체명} 형태의 객체를 전달할 경우 '' 사이에 넣기
+// <script type="text/javascript">
+//   test('${data}');
+// </script>
+
+// 출처: http://repien.tistory.com/12 [Magical Night]
+
+
+
+/* 7월 월말, 8월 세관 제출용 데이터를 만드느라,
+ * 본의 아니게 commit을 소홀히 했다.
+ * 반성하는 마음으로.. commit
+ */
