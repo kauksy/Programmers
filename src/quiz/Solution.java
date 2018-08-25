@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * 
- * @author SOO
+ * @author SOO 
  * 문제 설명
  *	2016년 1월 1일은 금요일입니다.
  * 2016년 a월 b일은 무슨 요일일까요?  
