@@ -1,0 +1,26 @@
+/**
+ * 1. 작업 할 때, 왠만한건 쿼리로 확인하려는 노력을 하자
+ *  - 하이브리스 시스템에서 제공하는 화면으로 접근하지 말고,
+ *  쿼리로 추출해서 확인하려고 하자. 데이터를 눈으로 확인하면 도태된다.
+**/
+
+
+
+/**
+ * 2. 예외처리 시, alert 띄우려고 사용한 부분의 파라미터 값이 String일때 
+ *  - 실제 파라미터로 가져오려고 하니 ObjectUtil이라 하여, Number로 캐스팅하고 int로 바꿔주었는데
+ *  - 넘버로 캐스팅이 불가하다고 했다.
+ * 처리방법: 애초에 파라미터 값을 String이 아닌 int Value로 고쳤고 기존 로직을 따르기로 했다.
+***/
+
+if(error){
+  long quantity = 0;
+            if (params.length > 0)
+            {
+              final Number n = (Number) params[1];
+              quantity = n.longValue();
+            }
+            cartModification.setPlanDisplayCode((String) params[0]);
+            cartModification.setQuantity(quantity);
+            cartModification.setStatusCode("lowStock");
+}
