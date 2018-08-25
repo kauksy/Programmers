@@ -25,9 +25,7 @@ public class FindCharater {
 		if((s.length()%2) == 0)
 		{
 			System.out.println("Â¦¼ö");
-
 			System.out.println(s.substring(beginIndex-1, endIndex));
-			
 			
 		}else
 		{
